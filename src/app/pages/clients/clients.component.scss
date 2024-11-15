@@ -1,11 +1,164 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  // background-color: #0c1015;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+.search-container {
+  margin-bottom: 20px;
+
+  .search-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #1e2329;
+    border-radius: 4px;
+    background-color: #1a1f25;
+    color: #fff;
+    font-size: 14px;
+
+    &::placeholder {
+      color: #6c757d;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #2a3038;
+    }
+  }
+}
+
 .table-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+:host ::ng-deep {
+  .ngx-datatable.dark-theme {
+    background-color: #1a1f25;
+    width: 100%;
+
+    .datatable-header {
+      background-color: #1a1f25;
+      border-bottom: 1px solid #2a3038;
+
+      .datatable-header-cell {
+        background-color: #1a1f25;
+        color: #fff;
+        font-weight: normal;
+        padding: 12px;
+        border-right: 1px solid #2a3038;
+        text-transform: uppercase;
+
+        &:last-child {
+          border-right: none;
+
+          .header-alignment {
+            width: 100%;
+            text-align: right;
+            padding-right: 15px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .datatable-body {
+      .datatable-body-row {
+        border-bottom: 1px solid #2a3038;
+        background-color: #1a1f25;
+
+        &:nth-child(odd) {
+          background-color: #1e2329;
+        }
+
+        &:hover {
+          background-color: #2a3038;
+        }
+
+        .datatable-body-cell {
+          color: #fff;
+          padding: 12px;
+
+          &:last-child {
+            padding-right: 15px;
+          }
+        }
+      }
+    }
+
+    .datatable-footer {
+      background-color: #1a1f25;
+      color: #fff;
+      border-top: 1px solid #2a3038;
+
+      .datatable-pager {
+        li {
+          &.active a {
+            background-color: #2196F3;
+          }
+
+          &:not(.disabled) a {
+            color: #fff;
+
+            &:hover {
+              background-color: #2a3038;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .actions {
     display: flex;
-    flex-direction: column;
-    height: 100vh; 
-    width: 100%;
+    gap: 8px;
+    justify-content: flex-end;
+    padding-right: 0;
+
+    .action-btn {
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.edit {
+        background-color: #2196F3;
+        color: white;
+
+        &:hover {
+          background-color: #1976D2;
+        }
+      }
+
+      &.delete {
+        background-color: #f44336;
+        color: white;
+
+        &:hover {
+          background-color: #d32f2f;
+        }
+      }
+    }
   }
-  
-  :host ::ng-deep .fullscreen {
-    height: 100%;
-    width: 100%;
-  }
+}
