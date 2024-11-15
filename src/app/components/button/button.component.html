@@ -1,0 +1,22 @@
+<button [type]="type" [disabled]="disabled || loading" [class]="buttonClasses" (click)="onClick($event)">
+
+    <span *ngIf="loading" class="spinner"></span>
+
+    <span *ngIf="iconLeft && !loading" class="icon icon-left">
+        {{ iconLeft }}
+    </span>
+
+    <span class="content" [class.loading]="loading">
+        <ng-content></ng-content>
+    </span>
+
+    <span *ngIf="iconRight && !loading" class="icon icon-right">
+        {{ iconRight }}
+    </span>
+</button>
+
+<!-- exemplo de uso
+<app-button>Botão Padrão</app-button>
+<app-button variant="secondary" size="lg">Botão Grande</app-button>
+<app-button [block]="true">Botão em Bloco</app-button>
+<app-button variant="danger" [loading]="true">Carregando</app-button> -->

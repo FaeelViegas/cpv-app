@@ -1,0 +1,8 @@
+<div class="app-container">
+  <app-sidebar #sidebar (sidebarToggled)="onSidebarToggle($event)"></app-sidebar>
+  <main class="content-container" [ngClass]="{'content-collapsed': !sidebar.isExpanded}">
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

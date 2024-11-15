@@ -1,0 +1,18 @@
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #0B1120;
+  }
+
+  .content-container {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+    background-color: #0B1120;
+    color: #fff;
+  }
+
+  :host-context(.sidebar-collapsed) .content-container {
+    margin-left: 70px;
+  }

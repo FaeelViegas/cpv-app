@@ -1,0 +1,13 @@
+<mat-form-field>
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [disabled]="disabled" [formControl]="selectCtrl" (selectionChange)="onSelectionChange($event)"
+      #singleSelect>
+      <mat-option>
+        <ngx-mat-select-search [formControl]="filterCtrl" placeholderLabel="Pesquisar"
+          noEntriesFoundLabel="Nenhum resultado encontrado!"></ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>

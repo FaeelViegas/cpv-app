@@ -1,0 +1,29 @@
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #0B1120;
+}
+
+.content-container {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    background-color: #0B1120;
+    color: #fff;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+}
+
+.content-container.content-collapsed {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+.page-content {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    min-height: calc(100vh - 4rem);
+    height: 100%;
+}

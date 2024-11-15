@@ -1,0 +1,61 @@
+<div class="form-field">
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'date'">
+      <div class="input-container">
+        <input [id]="id" [formControl]="inputControl" type="date" [disabled]="disabled" [required]="required"
+          [class.invalid]="showError" [attr.role]="role" [attr.autocomplete]="autocomplete" [placeholder]="placeholder"
+          (input)="onInput($event)" (blur)="onBlur()" (focus)="onFocus()">
+        <label [for]="id">{{ label }}</label>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'array:string'">
+      <app-input-select [label]="label" [options]="selectOptions" [selection]="option"
+        (selectionChange)="onOptionChange($event)" [formControl]="selectControl" [required]="required"
+        [disabled]="disabled" class="col-6">
+      </app-input-select>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'entity:carrier'">
+      <app-input-select [label]="label" [options]="selectOptions" [selection]="option"
+        (selectionChange)="onOptionChange($event)" [formControl]="selectControl" [required]="required"
+        [disabled]="disabled" class="col-6">
+      </app-input-select>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'password'">
+      <div class="input-container" [class.focused]="isInputFocused">
+        <input [id]="id" [formControl]="inputControl" [type]="showPassword ? 'text' : 'password'" [disabled]="disabled"
+          [required]="required" [class.invalid]="showError" [attr.role]="role" [attr.autocomplete]="autocomplete"
+          [placeholder]=" " (input)="onInput($event)" (focus)="onFocus()" (blur)="onBlur()">
+        <label [for]="id">
+          {{ label }}
+          <small class="input-optional" *ngIf="!required">(opcional)</small>
+        </label>
+        <button type="button" class="toggle-password" (mousedown)="togglePasswordVisibility($event)"
+          [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'" [class.visible]="isInputFocused">
+          <i class="eye-icon" [class.open]="showPassword"></i>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <div class="input-container">
+        <input #inputElement [id]="id" [formControl]="inputControl" [type]="type" [disabled]="disabled"
+          [required]="required" [class.invalid]="showError" [attr.role]="role" [attr.autocomplete]="autocomplete"
+          [placeholder]="placeholder" (input)="onInput($event)" (blur)="onBlur()" (focus)="onFocus()">
+        <label [for]="id">
+          {{ label }}
+          <small class="input-optional" *ngIf="!required">(opcional)</small>
+        </label>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div *ngIf="showError" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="showSuccess" class="success-message">
+    {{ successMessage }}
+  </div>
+</div>
